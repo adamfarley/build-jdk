@@ -100,7 +100,7 @@ export async function buildJDK(
   await exec.exec(
     'cpp -v /dev/null -o /dev/null'
   )
-  await exec.exec(`bash ./makejdk-any-platform.sh \
+  await exec.exec(`\"bash ./makejdk-any-platform.sh \
   -J "${jdkBootDir}" \
   ${skipFreetype} \
   --configure-args "${configureArgs}" \
@@ -109,7 +109,7 @@ export async function buildJDK(
   --use-jep319-certs \
   --build-variant ${impl} \
   --disable-adopt-branch-safety \
-  ${javaToBuild} | echo `)
+  ${javaToBuild}\" | echo`)
 
   await exec.exec(
     'find /usr/include -name sdt.h'
