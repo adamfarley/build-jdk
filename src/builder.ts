@@ -109,7 +109,15 @@ export async function buildJDK(
   --use-jep319-certs \
   --build-variant ${impl} \
   --disable-adopt-branch-safety \
-  ${javaToBuild}`)
+  ${javaToBuild} | echo`)
+
+  await exec.exec(
+    'find /usr/include -name sdt.h'
+  )
+
+  await exec.exec(
+    'thisisnotacommand'
+  )
 
   // TODO: update directory for ubuntu
   await printJavaVersion(javaToBuild)
