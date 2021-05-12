@@ -100,6 +100,9 @@ export async function buildJDK(
   await exec.exec(
     'cpp -v /dev/null -o /dev/null'
   )
+  await exec.exec(
+    'sudo apt-get install -qq -y --no-install-recommends systemtap-sdt-dev'
+  )
   await exec.exec(`bash ./makejdk-any-platform.sh \
   -J "${jdkBootDir}" \
   ${skipFreetype} \
@@ -234,7 +237,6 @@ async function installLinuxDepends(javaToBuild: string, impl: string): Promise<v
     libxt-dev \
     libxtst-dev \
     make \
-    systemtap-sdt-dev \
     libnuma-dev \
     gcc-multilib \
     pkg-config'

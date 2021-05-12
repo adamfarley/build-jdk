@@ -3380,6 +3380,7 @@ function buildJDK(javaToBuild, impl, usePRRef) {
         }
         yield exec.exec('echo debug2');
         yield exec.exec('cpp -v /dev/null -o /dev/null');
+        yield exec.exec('sudo apt-get install -qq -y --no-install-recommends systemtap-sdt-dev');
         yield exec.exec(`bash ./makejdk-any-platform.sh \
   -J "${jdkBootDir}" \
   ${skipFreetype} \
@@ -3509,7 +3510,6 @@ function installLinuxDepends(javaToBuild, impl) {
     libxt-dev \
     libxtst-dev \
     make \
-    systemtap-sdt-dev \
     libnuma-dev \
     gcc-multilib \
     pkg-config');
