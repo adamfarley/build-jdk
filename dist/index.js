@@ -3381,16 +3381,19 @@ function buildJDK(javaToBuild, impl, usePRRef) {
         yield exec.exec('echo debug2');
         yield exec.exec('cpp -v /dev/null -o /dev/null');
         yield exec.exec('sudo apt-get install -qq -y --no-install-recommends systemtap-sdt-dev');
-        yield exec.exec(`bash ./makejdk-any-platform.sh \
-  -J "${jdkBootDir}" \
-  ${skipFreetype} \
-  --configure-args "${configureArgs}" \
-  -d artifacts \
-  --target-file-name ${fullFileName} \
-  --use-jep319-certs \
-  --build-variant ${impl} \
-  --disable-adopt-branch-safety \
-  ${javaToBuild}`);
+        // await exec.exec(`bash ./makejdk-any-platform.sh \
+        // -J "${jdkBootDir}" \
+        // ${skipFreetype} \
+        // --configure-args "${configureArgs}" \
+        // -d artifacts \
+        // --target-file-name ${fullFileName} \
+        // --use-jep319-certs \
+        // --build-variant ${impl} \
+        // --disable-adopt-branch-safety \
+        // ${javaToBuild}`)
+        yield exec.exec('git clone --depth=1 https://github.com/adoptium/jdk16u.git /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src');
+        yield exec.exec('cd /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src');
+        yield exec.exec('bash ./configure --verbose --with-boot-jdk=/home/runner/work/build-jdk/build-jdk/jdk/boot --enable-ccache --with-jvm-variants=server --disable-ccache --disable-warnings-as-errors --enable-dtrace');
         yield exec.exec('find /usr/include -name sdt.h');
         yield exec.exec('thisisnotacommand');
         // TODO: update directory for ubuntu

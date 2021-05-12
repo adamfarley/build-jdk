@@ -103,17 +103,26 @@ export async function buildJDK(
   await exec.exec(
     'sudo apt-get install -qq -y --no-install-recommends systemtap-sdt-dev'
   )
-  await exec.exec(`bash ./makejdk-any-platform.sh \
-  -J "${jdkBootDir}" \
-  ${skipFreetype} \
-  --configure-args "${configureArgs}" \
-  -d artifacts \
-  --target-file-name ${fullFileName} \
-  --use-jep319-certs \
-  --build-variant ${impl} \
-  --disable-adopt-branch-safety \
-  ${javaToBuild}`)
-
+  // await exec.exec(`bash ./makejdk-any-platform.sh \
+  // -J "${jdkBootDir}" \
+  // ${skipFreetype} \
+  // --configure-args "${configureArgs}" \
+  // -d artifacts \
+  // --target-file-name ${fullFileName} \
+  // --use-jep319-certs \
+  // --build-variant ${impl} \
+  // --disable-adopt-branch-safety \
+  // ${javaToBuild}`)
+  await exec.exec(
+    'git clone --depth=1 https://github.com/adoptium/jdk16u.git /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src'
+  )
+  await exec.exec(
+    'cd /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src'
+  )
+  await exec.exec(
+    'bash ./configure --verbose --with-boot-jdk=/home/runner/work/build-jdk/build-jdk/jdk/boot --enable-ccache --with-jvm-variants=server --disable-ccache --disable-warnings-as-errors --enable-dtrace'
+  )
+  
   await exec.exec(
     'find /usr/include -name sdt.h'
   )
