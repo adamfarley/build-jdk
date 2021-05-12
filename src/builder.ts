@@ -220,12 +220,13 @@ async function installLinuxDepends(javaToBuild: string, impl: string): Promise<v
     libxt-dev \
     libxtst-dev \
     make \
+    systemtap-sdt-dev \
     libnuma-dev \
     gcc-multilib \
     pkg-config'
   )
   await exec.exec(
-    'sudo apt-get install -qq -y --no-install-recommends systemtap-sdt-dev'
+    'find / -name sdt.h'
   )
 
   if (javaToBuild === 'jdk8u') {
