@@ -226,7 +226,19 @@ async function installLinuxDepends(javaToBuild: string, impl: string): Promise<v
     pkg-config'
   )
   await exec.exec(
-    'find / -name sdt.h'
+    'ls /usr'
+  )
+  await exec.exec(
+    'ls /usr/include'
+  )
+  await exec.exec(
+    'ls /usr/include/x86_64-linux-gnu'
+  )
+  await exec.exec(
+    'ls /usr/include/x86_64-linux-gnu/sys'
+  )
+  await exec.exec(
+    'find / -name sdt.h 2>/dev/null'
   )
 
   if (javaToBuild === 'jdk8u') {

@@ -3509,7 +3509,11 @@ function installLinuxDepends(javaToBuild, impl) {
     libnuma-dev \
     gcc-multilib \
     pkg-config');
-        yield exec.exec('find / -name sdt.h');
+        yield exec.exec('ls /usr');
+        yield exec.exec('ls /usr/include');
+        yield exec.exec('ls /usr/include/x86_64-linux-gnu');
+        yield exec.exec('ls /usr/include/x86_64-linux-gnu/sys');
+        yield exec.exec('find / -name sdt.h 2>/dev/null');
         if (javaToBuild === 'jdk8u') {
             yield exec.exec('sudo add-apt-repository ppa:openjdk-r/ppa');
             yield exec.exec(`sudo apt-get update`);
