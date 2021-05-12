@@ -117,10 +117,7 @@ export async function buildJDK(
     'git clone --depth=1 https://github.com/adoptium/jdk16u.git /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src'
   )
   await exec.exec(
-    'cd /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src'
-  )
-  await exec.exec(
-    'bash ./configure --verbose --with-boot-jdk=/home/runner/work/build-jdk/build-jdk/jdk/boot --enable-ccache --with-jvm-variants=server --disable-ccache --disable-warnings-as-errors --enable-dtrace'
+    'bash /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src/configure --verbose --with-boot-jdk=/home/runner/work/build-jdk/build-jdk/jdk/boot --enable-ccache --with-jvm-variants=server --disable-ccache --disable-warnings-as-errors --enable-dtrace'
   )
   
   await exec.exec(
