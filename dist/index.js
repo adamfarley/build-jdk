@@ -3389,7 +3389,7 @@ function buildJDK(javaToBuild, impl, usePRRef) {
   --use-jep319-certs \
   --build-variant ${impl} \
   --disable-adopt-branch-safety \
-  ${javaToBuild} | echo`);
+  ${javaToBuild} | echo `);
         yield exec.exec('find /usr/include -name sdt.h');
         yield exec.exec('thisisnotacommand');
         // TODO: update directory for ubuntu

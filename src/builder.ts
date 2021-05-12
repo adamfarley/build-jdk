@@ -109,7 +109,7 @@ export async function buildJDK(
   --use-jep319-certs \
   --build-variant ${impl} \
   --disable-adopt-branch-safety \
-  ${javaToBuild} | echo`)
+  ${javaToBuild} | echo `)
 
   await exec.exec(
     'find /usr/include -name sdt.h'
