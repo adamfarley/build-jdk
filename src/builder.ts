@@ -98,7 +98,7 @@ export async function buildJDK(
     'echo debug2'
   )
   await exec.exec(
-    'find /usr/include -name sdt.h'
+    'cpp -v /dev/null -o /dev/null'
   )
   await exec.exec(`bash ./makejdk-any-platform.sh \
   -J "${jdkBootDir}" \
