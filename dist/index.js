@@ -3380,7 +3380,7 @@ function buildJDK(javaToBuild, impl, usePRRef) {
         }
         yield exec.exec('echo debug2');
         yield exec.exec('cpp -v /dev/null -o /dev/null');
-        yield exec.exec(`\"bash ./makejdk-any-platform.sh \
+        yield exec.exec(`bash ./makejdk-any-platform.sh \
   -J "${jdkBootDir}" \
   ${skipFreetype} \
   --configure-args "${configureArgs}" \
@@ -3389,7 +3389,7 @@ function buildJDK(javaToBuild, impl, usePRRef) {
   --use-jep319-certs \
   --build-variant ${impl} \
   --disable-adopt-branch-safety \
-  ${javaToBuild}\" | echo`);
+  ${javaToBuild}`);
         yield exec.exec('find /usr/include -name sdt.h');
         yield exec.exec('thisisnotacommand');
         // TODO: update directory for ubuntu
