@@ -238,8 +238,12 @@ async function installLinuxDepends(javaToBuild: string, impl: string): Promise<v
     'ls /usr/include/x86_64-linux-gnu/sys'
   )
   await exec.exec(
-    'find / -name sdt.h 2>/dev/null'
+    'sudo find /usr/include -name sdt.h'
   )
+  await exec.exec(
+    'find /usr/include -name sdt.h'
+  )
+  
 
   if (javaToBuild === 'jdk8u') {
     await exec.exec('sudo add-apt-repository ppa:openjdk-r/ppa')
