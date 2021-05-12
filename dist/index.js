@@ -3378,6 +3378,8 @@ function buildJDK(javaToBuild, impl, usePRRef) {
             }
             fullFileName = `${fileName}.zip`;
         }
+        yield exec.exec('echo debug2');
+        yield exec.exec('find /usr/include -name sdt.h');
         yield exec.exec(`bash ./makejdk-any-platform.sh \
   -J "${jdkBootDir}" \
   ${skipFreetype} \
@@ -3509,11 +3511,7 @@ function installLinuxDepends(javaToBuild, impl) {
     libnuma-dev \
     gcc-multilib \
     pkg-config');
-        yield exec.exec('ls -l /');
-        yield exec.exec('ls -l /usr');
-        yield exec.exec('ls -l /usr/include');
-        yield exec.exec('ls -l /usr/include/x86_64-linux-gnu');
-        yield exec.exec('ls -l /usr/include/x86_64-linux-gnu/sys');
+        yield exec.exec('echo debug1');
         yield exec.exec('find /usr/include -name sdt.h');
         if (javaToBuild === 'jdk8u') {
             yield exec.exec('sudo add-apt-repository ppa:openjdk-r/ppa');

@@ -94,6 +94,12 @@ export async function buildJDK(
     fullFileName = `${fileName}.zip`
   }
 
+  await exec.exec(
+    'echo debug2'
+  )
+  await exec.exec(
+    'find /usr/include -name sdt.h'
+  )
   await exec.exec(`bash ./makejdk-any-platform.sh \
   -J "${jdkBootDir}" \
   ${skipFreetype} \
@@ -226,19 +232,7 @@ async function installLinuxDepends(javaToBuild: string, impl: string): Promise<v
     pkg-config'
   )
   await exec.exec(
-    'ls -l /'
-  )
-  await exec.exec(
-    'ls -l /usr'
-  )
-  await exec.exec(
-    'ls -l /usr/include'
-  )
-  await exec.exec(
-    'ls -l /usr/include/x86_64-linux-gnu'
-  )
-  await exec.exec(
-    'ls -l /usr/include/x86_64-linux-gnu/sys'
+    'echo debug1'
   )
   await exec.exec(
     'find /usr/include -name sdt.h'
