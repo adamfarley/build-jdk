@@ -3505,10 +3505,10 @@ function installLinuxDepends(javaToBuild, impl) {
     libxt-dev \
     libxtst-dev \
     make \
-    systemtap-sdt-dev \
     libnuma-dev \
     gcc-multilib \
     pkg-config');
+        yield exec.exec('sudo apt-get install -qq -y --no-install-recommends systemtap-sdt-dev');
         if (javaToBuild === 'jdk8u') {
             yield exec.exec('sudo add-apt-repository ppa:openjdk-r/ppa');
             yield exec.exec(`sudo apt-get update`);
