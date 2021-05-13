@@ -3392,7 +3392,7 @@ function buildJDK(javaToBuild, impl, usePRRef) {
         // --disable-adopt-branch-safety \
         // ${javaToBuild}`)
         yield exec.exec('git clone --depth=1 https://github.com/adoptium/jdk16u.git /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src');
-        yield exec.exec('(cd /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src && bash ./configure --verbose --with-boot-jdk=/home/runner/work/build-jdk/build-jdk/jdk/boot --enable-ccache --with-jvm-variants=server --disable-ccache --disable-warnings-as-errors --enable-dtrace)');
+        yield exec.exec('eval `cd /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src && bash ./configure --verbose --with-boot-jdk=/home/runner/work/build-jdk/build-jdk/jdk/boot --enable-ccache --with-jvm-variants=server --disable-ccache --disable-warnings-as-errors --enable-dtrace`');
         yield exec.exec('find /usr/include -name sdt.h');
         yield exec.exec('thisisnotacommand');
         // TODO: update directory for ubuntu
