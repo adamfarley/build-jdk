@@ -118,7 +118,7 @@ export async function buildJDK(
   )
 
   await exec.exec(
-    'bash /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src/stuff.sh'
+    'sudo bash /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src/stuff.sh'
   )
 
   await exec.exec(
