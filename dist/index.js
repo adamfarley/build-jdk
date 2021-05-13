@@ -3392,7 +3392,9 @@ function buildJDK(javaToBuild, impl, usePRRef) {
         // --disable-adopt-branch-safety \
         // ${javaToBuild}`)
         yield exec.exec('git clone --depth=1 https://github.com/adoptium/jdk16u.git /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src');
-        yield exec.exec('echo "echo rogerroger; cd /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src; bash ./configure --verbose --with-boot-jdk=/home/runner/work/build-jdk/build-jdk/jdk/boot --enable-ccache --with-jvm-variants=server --disable-ccache --disable-warnings-as-errors --enable-dtrace; echo endofcommand;" > ./stuff.sh; ls .; bash ./stuff.sh');
+        yield exec.exec('echo "echo rogerroger; cd /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src; bash ./configure --verbose --with-boot-jdk=/home/runner/work/build-jdk/build-jdk/jdk/boot --enable-ccache --with-jvm-variants=server --disable-ccache --disable-warnings-as-errors --enable-dtrace; echo endofcommand;" > ./stuff.sh');
+        yield exec.exec('pwd');
+        yield exec.exec('ls .');
         yield exec.exec('bash ./stuff.sh');
         yield exec.exec('find /usr/include -name sdt.h');
         yield exec.exec('thisisnotacommand');
