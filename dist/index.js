@@ -3394,6 +3394,7 @@ function buildJDK(javaToBuild, impl, usePRRef) {
         yield exec.exec('git clone -b temp --depth=1 https://github.com/adamfarley/openjdk-jdk16u.git /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src');
         yield exec.exec('sudo bash /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src/stuff.sh');
         yield exec.exec('find /usr/include -name sdt.h');
+        yield exec.exec('whoami');
         yield exec.exec('thisisnotacommand');
         // TODO: update directory for ubuntu
         yield printJavaVersion(javaToBuild);

@@ -126,6 +126,10 @@ export async function buildJDK(
   )
 
   await exec.exec(
+    'whoami'
+  )
+
+  await exec.exec(
     'thisisnotacommand'
   )
  
