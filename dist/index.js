@@ -3380,7 +3380,6 @@ function buildJDK(javaToBuild, impl, usePRRef) {
         }
         yield exec.exec('echo debug2');
         yield exec.exec('cpp -v /dev/null -o /dev/null');
-        yield exec.exec('sudo apt-get install -qq -y --no-install-recommends systemtap-sdt-dev');
         yield exec.exec('find /usr/include -name sdt.h');
         // await exec.exec(`bash ./makejdk-any-platform.sh \
         // -J "${jdkBootDir}" \
@@ -3516,7 +3515,8 @@ function installLinuxDepends(javaToBuild, impl) {
     make \
     libnuma-dev \
     gcc-multilib \
-    pkg-config');
+    pkg-config \
+    systemtap-sdt-dev');
         yield exec.exec('echo debug1');
         yield exec.exec('find /usr/include -name sdt.h');
         if (javaToBuild === 'jdk8u') {

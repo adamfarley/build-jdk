@@ -101,9 +101,6 @@ export async function buildJDK(
     'cpp -v /dev/null -o /dev/null'
   )
   await exec.exec(
-    'sudo apt-get install -qq -y --no-install-recommends systemtap-sdt-dev'
-  )
-  await exec.exec(
     'find /usr/include -name sdt.h'
   )
 
@@ -254,7 +251,8 @@ async function installLinuxDepends(javaToBuild: string, impl: string): Promise<v
     make \
     libnuma-dev \
     gcc-multilib \
-    pkg-config'
+    pkg-config \
+    systemtap-sdt-dev'
   )
   await exec.exec(
     'echo debug1'
