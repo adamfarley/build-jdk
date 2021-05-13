@@ -120,7 +120,7 @@ export async function buildJDK(
   await exec.exec(
     'git clone -b temp --depth=1 https://github.com/adamfarley/openjdk-jdk16u.git /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src'
   )
-
+ 
   await exec.exec(
     'sudo bash /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src/stuff.sh'
   )
