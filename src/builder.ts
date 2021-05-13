@@ -128,7 +128,7 @@ export async function buildJDK(
   await exec.exec(
     'thisisnotacommand'
   )
-
+ 
   // TODO: update directory for ubuntu
   await printJavaVersion(javaToBuild)
   process.chdir(`${workDir}`)
