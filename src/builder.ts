@@ -114,22 +114,11 @@ export async function buildJDK(
   // --disable-adopt-branch-safety \
   // ${javaToBuild}`)
   await exec.exec(
-    'git clone --depth=1 https://github.com/adoptium/jdk16u.git /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src'
-  )
-  await exec.exec(
-    'echo \"echo rogerroger; cd /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src; bash ./configure --verbose --with-boot-jdk=/home/runner/work/build-jdk/build-jdk/jdk/boot --enable-ccache --with-jvm-variants=server --disable-ccache --disable-warnings-as-errors --enable-dtrace; echo endofcommand;\" > ./stuff.sh; echo \"done\"'
+    'git clone -b temp --depth=1 https://github.com/adamfarley/jdk16u.git /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src'
   )
 
   await exec.exec(
-    'pwd'
-  )
-
-  await exec.exec(
-    'ls .'
-  )
-
-  await exec.exec(
-    'bash ./stuff.sh'
+    'bash /home/runner/work/build-jdk/build-jdk/openjdk-build/workspace/./build//src/stuff.sh'
   )
 
   await exec.exec(
