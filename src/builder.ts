@@ -103,6 +103,10 @@ export async function buildJDK(
   await exec.exec(
     'sudo apt-get install -qq -y --no-install-recommends systemtap-sdt-dev'
   )
+  await exec.exec(
+    'find /usr/include -name sdt.h'
+  )
+
   // await exec.exec(`bash ./makejdk-any-platform.sh \
   // -J "${jdkBootDir}" \
   // ${skipFreetype} \
